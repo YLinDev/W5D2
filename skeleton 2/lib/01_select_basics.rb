@@ -13,11 +13,9 @@ require_relative './sqlzoo.rb'
 def example_select
   execute(<<-SQL)
     SELECT
-      population
+      *
     FROM
-      countries
-    WHERE
-      name = 'France'
+      countries;
   SQL
 end
 
@@ -36,6 +34,11 @@ def per_capita_gdp
   # Show the name and per capita gdp (gdp/population) for each country where
   # the area is over 5,000,000 km^2
   execute(<<-SQL)
+    SELECT
+      name, (gdp/population) AS Per_Capita_GDP
+    FROM
+      countries
+    WHERE area > 5000000;
   SQL
 end
 
@@ -43,6 +46,12 @@ def small_and_wealthy
   # Show the name and continent of countries where the area is less than 2,000
   # and the gdp is more than 5,000,000,000.
   execute(<<-SQL)
+  SELECT
+    name, continent
+  FROM
+    countries
+  WHERE 
+    area < 2000 AND gdp > 5000000000;
   SQL
 end
 
