@@ -137,6 +137,6 @@ def sparse_continents
         countries
       WHERE
         population >= 25000000
-    )
+    );
   SQL
 end
